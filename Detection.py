@@ -10,6 +10,8 @@ from sklearn.feature_extraction.text import CountVectorizer,TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB,MultinomialNB,BernoulliNB
 from sklearn.metrics import accuracy_score,confusion_matrix,precision_score
+import pickle
+
 
 ps = PorterStemmer()
 stop_words = set(stopwords.words('english'))
@@ -118,27 +120,9 @@ mnb.fit(X_train,y_train)
 
 #we are use the multinomialNB which has more pricision and accuracy
 
-
-
-# Paste your email/message here
-email_text = input("Paste Your Email Below:\n")
-
-# Preprocess the email
-transformed_email = transform_text(email_text)
-
-# Convert text into TF-IDF vector
-email_vector = tfid.transform([transformed_email]).toarray()
-
-# Predict
-prediction = mnb.predict(email_vector)
-
-# Display result
-if prediction[0] == 1:
-    print("Spam Email 🚨")
-else:
-    print("Not Spam Email ✅")
-
-
+# Save model and vectorizer
+# pickle.dump(mnb, open("model.pkl", "wb"))
+# pickle.dump(tfid, open("vectorizer.pkl", "wb"))
 
 #URGENT! You have won $1000. Send your bank details to receive your reward. ->spam
 """

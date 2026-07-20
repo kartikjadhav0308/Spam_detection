@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Spam Detection</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    background:#f2f2f2;
+}
+
+.container{
+
+    width:500px;
+    margin:100px auto;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0px 0px 10px gray;
+
+}
+
+textarea{
+
+    width:100%;
+    height:150px;
+    padding:10px;
+    font-size:16px;
+
+}
+
+
+button{
+
+    margin-top:20px;
+    width:100%;
+    padding:12px;
+    background:#007bff;
+    color:white;
+    border:none;
+    font-size:18px;
+    cursor:pointer;
+
+}
+
+
+.result{
+
+    margin-top:20px;
+    font-size:22px;
+    text-align:center;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+<h2>Spam Email Detector</h2>
+
+
+<form action="/predict" method="POST">
+
+
+<textarea name="message" placeholder="Paste your email here..." required>{{message}}</textarea>
+
+
+<button type="submit">
+Check Email
+</button>
+
+
+</form>
+
+
+
+{% if prediction %}
+
+<div class="result">
+
+{{prediction}}
+
+</div>
+
+{% endif %}
+
+
+</div>
+
+
+</body>
+
+</html>
